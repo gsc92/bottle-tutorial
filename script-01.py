@@ -8,6 +8,6 @@ app = Bottle()
 @app.route('/')
 @app.route('/<name:re:[a-z]+>')
 def index(name='world'):
-    return template('hello-world', name=name)
+    return template('script-01', name=name)
 
 run(app, host='localhost', port=8080)
