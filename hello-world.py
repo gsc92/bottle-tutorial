@@ -1,3 +1,6 @@
+import bottle
+bottle.TEMPLATE_PATH = ['template']
+
 from bottle import Bottle, run, template
 
 app = Bottle()
