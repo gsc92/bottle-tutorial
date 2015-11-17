@@ -1,7 +1,10 @@
-from bottle import route, run, template
+from bottle import Bottle, run, template
 
-@route('/hello/<name>')
-def index(name):
-    return template('<b>Hello {{name}}</b>!', name=name)
+app = Bottle()
 
-run(host='localhost', port=8080)
+@app.route('/')
+@app.route('/<name:re:[a-z]+>')
+def index(name='world'):
+    return template('hello-world', name=name)
+
+run(app, host='localhost', port=8080)

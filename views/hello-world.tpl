@@ -1,6 +1,6 @@
 <html>
 <head></head>
 <body>
-<name { text-align:center, color:green }></name>>
-</body>>
+<p style="font-weight: bold; font-size: xx-large; text-align:center">Hello {{name}}!</p>
+</body>
 </html>
