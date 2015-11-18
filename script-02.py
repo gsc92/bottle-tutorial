@@ -1,8 +1,11 @@
-from bottle import run,route,template
+from bottle import error,run,route
 
-@route('/hello')
-def hello():
-	return "Hello World!"
+
+@route('/wiki/<pagename>')            # matches /wiki/Learning_Python
+def show_wiki_page(pagename):
+    print('[show-wiki-page]', pagename)
+    return pagename
+
 
 
 
