@@ -1,8 +1,9 @@
 from bottle import run,route,template
 
-@route('/')
-@route('/hello/<name>')
-def greet(name='Stranger'):
-    return template('Hello {{name}}, how are you?', name=name)
+@route('/hello')
+def hello():
+	return "Hello World!"
+
+
 
 run( host='localhost', port=8080)
