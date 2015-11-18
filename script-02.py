@@ -1,9 +1,8 @@
-from bottle import error,run,app
+from bottle import run,route,template
 
+@route('/')
+@route('/hello/<name>')
+def greet(name='Stranger'):
+    return template('Hello {{name}}, how are you?', name=name)
 
-@error(404)
-def error404(error):
-    return 'Nothing here, sorry'
-
-
-run(app, host='localhost', port=8080)
+run( host='localhost', port=8080)
