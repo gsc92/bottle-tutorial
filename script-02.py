@@ -1,8 +1,9 @@
 from bottle import static_file,route, run
 
+from bottle import static_file
 @route('/static/<filename>')
-def server_static(file_name):
-    return static_file(file_name, root='/C:/Desktop/1.jpg')
+def server_static(filename):
+    return static_file(filename, root='C:\\Users\GOKCE\Desktop\1.jpg')
 
 
-run(host='localhost', port=8080)
+run(host='localhost', port=8082)
