@@ -1,13 +1,12 @@
-from bottle import response, run, route
+from bottle import static_file, route, run
 
-@route('/iso')
-def get_iso():
-    response.content_type = 'ISO-8859-15'
-    return u'This will be sent with ISO-8859-15 encoding.'
+from bottle import static_file
+@route('/images/<filename:re:.*\.png>')
+def send_image(filename):
+    return static_file(filename, root='/path/to/image/files', mimetype='image/png')
 
-@route('/latin9')
-def get_latin():
-    response.content_type = 'text/html; charset=latin9'
-    return u'ISO-8859-15 is also known as latin9.'
+@route('/static/<filename:path>')
+def send_static(filename):
+    return static_file(filename, root='/path/to/static/files')
 
 run(host='localhost', port=8081)
