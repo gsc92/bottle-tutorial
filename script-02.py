@@ -1,9 +1,12 @@
-from bottle import request,route,run,static_file
+from bottle import route, run, static_file
 
 
-@route('/static/<filename>')
-def server_static(filename):
-    return static_file(filename, root='C://Users/GOKCE/Desktop/1.jpg')
+@route('/desktop/<file_name>')
+def serve_desktop(file_name):
+    return static_file(file_name, root='C://Users/GOKCE/Desktop/')
 
+@route('/desktop/homepage/<file_name>')
+def serve_homepage(file_name):
+    return static_file(file_name, root='C://Users/GOKCE/Desktop/Homepage/')
 
 run(host='localhost', port=8080)
