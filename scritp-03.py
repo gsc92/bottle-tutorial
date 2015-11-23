@@ -1,12 +1,8 @@
 from bottle import static_file, route, run
 
-from bottle import static_file
-@route('/images/<filename:re:.*\.png>')
-def send_image(filename):
-    return static_file(filename, root='/path/to/image/files', mimetype='image/png')
-
-@route('/static/<filename:path>')
-def send_static(filename):
-    return static_file(filename, root='/path/to/static/files')
+from bottle import route, abort
+@route('/restricted')
+def restricted():
+    abort(401, "Sorry, access denied.")
 
 run(host='localhost', port=8081)
