@@ -1,11 +1,11 @@
-from bottle import request, route, run, response
+from bottle import request, route, run, static_file
 
-@route('/hello')
-def hello_again():
-    if request.get_cookie("visited"):
-        return "Welcome back! Nice to see you again"
-    else:
-        response.set_cookie("visited", "yes")
-        return "Hello there! Nice to meet you"
+@route('/images/<filename:re:.*\.jpg>')
+def send_image(filename):
+    return static_file(filename, root='./static/', mimetype='image/jpg')
 
-run(host='localhost', port=8088)
+@route('/static/<filename:path>')
+def send_static(filename):
+    return static_file(filename, root='./static/')
+
+run(host='localhost', port=8081)
