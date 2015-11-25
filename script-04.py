@@ -1,10 +1,10 @@
-from bottle import route, request, response, run
+from bottle import route, request, run
 
-@route('/counter')
-def counter():
-    count = int(request.cookies.get('counter', '0'))
-    count += 1
-    response.set_cookie('counter', str(count))
-    return 'You visited this page %d times' % count
+@route('/is_ajax')
+def is_ajax():
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return 'This is an AJAX request'
+    else:
+        return 'This is a normal request'
 
 run(host='localhost', port=8081)
