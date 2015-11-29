@@ -1,6 +1,6 @@
 from bottle import request, run, route
 
-@route('/upload', method='POST')
+@route('/upload')
 
 def do_upload():
     category = request.forms.get('category')
